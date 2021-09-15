@@ -7,3 +7,6 @@ ICON = icon.res
 
 all:
 	$(GPP) $(FLAGS) $(CPP_FILES) $(OUT) $(ICON)
+
+test:
+	$(GPP) -Wall $(CPP_FILES) $(OUT) $(ICON)

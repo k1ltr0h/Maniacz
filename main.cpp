@@ -8,7 +8,11 @@
 //                                                          //
 // Create by k1ltr0.                                        //
 //////////////////////////////////////////////////////////////
-
+#ifdef _WIN32
+#include <Windows.h> // Sleep
+#else
+#include <unistd.h>
+#endif
 #include <stdio.h> // printf
 #include <stdlib.h> // EXIT_FAILURE, system()
 #include <dirent.h> // DIR
@@ -31,7 +35,7 @@ int main(int argc, char *argv[]){
         return EXIT_FAILURE;
     }
     if(argc < 2){
-        path = (char*)"./";
+        path = (char*)".";
     }
     else{
         path = argv[1];
@@ -47,6 +51,7 @@ int main(int argc, char *argv[]){
     if(system(unzip) == EXIT_FAILURE){
         printf("Add 'rar.exe' and 'unrar.exe' to the path or may be something else happens D;\n\
 in this case, please contact with code owner.");
+        Sleep(3000); // ms
         return EXIT_FAILURE;
     }
     
@@ -65,12 +70,12 @@ in this case, please contact with code owner.");
                 //printf("%s\n", dir_name);
                 command = addPaths(unzip, ent->d_name, dir_name, true);
 
-                system(command);
-                //printf("%s\n", command);
+                //system(command);
+                printf("%s\n", command);
 
                 command = addPaths(move, ent->d_name, dir_name);
                 system(command);
-                //printf("%s\n", command);
+                printf("%s\n", command);
 
                 delete[] command;
                 delete[] dir_name;
@@ -81,7 +86,8 @@ in this case, please contact with code owner.");
     } 
     else{
         /* could not open directory */
-        perror("");
+        perror("Could not open directory");
+        Sleep(3000);
         return EXIT_FAILURE;
     }
 }
