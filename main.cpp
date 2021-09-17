@@ -54,6 +54,10 @@ in this case, please contact with code owner.");
         Sleep(3000); // ms
         return EXIT_FAILURE;
     }
+
+    else{
+        printf("\n7z is installed...\n");
+    }
     
     //path = "../PSX";
     char* dir_name = NULL;
@@ -69,13 +73,12 @@ in this case, please contact with code owner.");
                 dir_name = getName(ent);
                 //printf("%s\n", dir_name);
                 command = addPaths(unzip, ent->d_name, dir_name, true);
-
-                //system(command);
                 printf("%s\n", command);
+                system(command);
 
                 command = addPaths(move, ent->d_name, dir_name);
-                system(command);
                 printf("%s\n", command);
+                system(command);
 
                 delete[] command;
                 delete[] dir_name;

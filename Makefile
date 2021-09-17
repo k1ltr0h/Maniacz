@@ -1,5 +1,5 @@
 GPP = g++
-FLAGS = -Wall -mwindows
+FLAGS = -Wall
 CPP_FILES = *.cpp
 OUT = -o maniacz
 ICON = icon.res
@@ -7,6 +7,3 @@ ICON = icon.res
 
 all:
 	$(GPP) $(FLAGS) $(CPP_FILES) $(OUT) $(ICON)
-
-test:
-	$(GPP) -Wall $(CPP_FILES) $(OUT) $(ICON)
